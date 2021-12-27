@@ -11,7 +11,7 @@ let render = {
     getWindowHeight: function(){return this.windowHeight},
     getWidnowWidth: function(){return this.windowWidth},
 }
-function drawGameWindow(heightPX, widthPX, backgroundColor, enableBorder, useBackgroundImage, backgroundImage){
+function drawGameWindow(widthPX, heightPX, backgroundColor, enableBorder, useBackgroundImage, backgroundImage){
     render.setWindowHeight(heightPX);
     render.setWindowWidth(widthPX);
     let newCanvas = document.createElement('canvas');
@@ -30,16 +30,34 @@ function drawGameWindow(heightPX, widthPX, backgroundColor, enableBorder, useBac
 }
 
 //Creates sprite image
-function drawSprite(sprite, positionX, positionY, height, width)
+function drawSprite(sprite, positionX, positionY, width, height)
 {   
     var canvas = document.getElementById("gameWindow");
     var ctx = canvas.getContext("2d");
-    const image = new Image(height, width);
+    const image = new Image(width, height);
     image.src = sprite;
     image.onload= function(){
         ctx.clearRect(0, 0, render.windowWidth, render.windowHeight);
         ctx.drawImage(image, positionX, positionY, this.width, this.height);
     }
+}
+
+function drawRect(positionX, positionY, width, height, color, useImage, imageSrc) {
+    var canvas = document.getElementById("gameWindow");
+    var ctx = canvas.getContext("2d");
+    //const rectImage = new Image(width, height);
+    //rectImage.src = imageSrc;
+    if(useImage === true){
+        // rectImage.onload= function(){
+        //     ctx.drawImage(image, positionX, positionY, this.width, this.height);
+        // }
+    }
+    else{
+        ctx.rect(positionX, positionY, width, height);
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+
 }
 
 

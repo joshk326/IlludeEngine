@@ -27,5 +27,6 @@ let physics = {
                 }
                 break;
         }
-    }
+    },
+    
 }

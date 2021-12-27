@@ -1,14 +1,18 @@
-drawGameWindow(500, 900, "white", true);
+drawGameWindow(600, 500, "white", true);
 document.addEventListener("keydown", controller.keyDownHandler, false);
 document.addEventListener("keyup", controller.keyUpHandler, false);
 physics.setVelocity(5);
 
-var lastRender = 0;
-function loop(timestamp){
-    var progress = timestamp - lastRender;
-    drawSprite("Assets/player.png", position.getX(), position.getY(), 36, 36);
-    lastRender = timestamp;
-    window.requestAnimationFrame(loop)
+function GameObjects(){
+    let block = drawRect(20, 50, 100, 50, "red", false);
+    let player = drawSprite("Assets/player.png", position.getX(), position.getY(), 36, 36);
 }
 
-window.requestAnimationFrame(loop)
+var lastRender = 0;
+function RunGame(timestamp){
+    var progress = timestamp - lastRender;
+    GameObjects();
+    lastRender = timestamp;
+    window.requestAnimationFrame(RunGame)
+}
+window.requestAnimationFrame(RunGame)

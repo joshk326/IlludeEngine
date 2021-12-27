@@ -26,22 +26,22 @@ let controller = {
         if(e.key == "w" || e.key == "ArrowUp" || e.key == "up") {
             this.upIsPressed = true; 
             physics.playerMovement("up"); 
-            console.log(position.getY());     
+            console.log("Y: " +position.getY());     
         }
         else if(e.key == "a" || e.key == "ArrowLeft" || e.key == "left"){
             this.leftIsPressed = true; 
             physics.playerMovement("left");
-            console.log(position.getX());        
+            console.log("X: " + position.getX());        
         }
         else if(e.key == "s" || e.key == "ArrowDown" || e.key == "down"){
             this.downIsPressed = true; 
             physics.playerMovement("down")
-            console.log(position.getY());
+            console.log("Y: " +position.getY());
         }
         else if(e.key == "d" || e.key == "ArrowRight" || e.key == "right"){
             this.rightIsPressed = true;
             physics.playerMovement("right")
-            console.log(position.getX());
+            console.log("X: " +position.getX());
         }
     },
     keyUpHandler: function(e){
