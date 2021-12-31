@@ -1,5 +1,10 @@
 let physics = {
     velocity: 0,
+    playerSize: 0,
+    setPlayerSize: function(size){
+        this.playerSize = size;
+    },
+    getPlayerSize: function(){return this.playerSize;},
     setVelocity: function(playerVelocity) {
         this.velocity = playerVelocity;
     },
@@ -12,7 +17,7 @@ let physics = {
                 }  
                 break;
             case 'down':
-                if(position.getY() < render.getWindowHeight() / 1.09 ){
+                if(position.getY() < render.getWindowHeight() - this.getPlayerSize() ){
                     position.setY(position.getY() + this.getVelocity());
                 }
                 break;
@@ -22,11 +27,10 @@ let physics = {
                 }
                 break;
             case 'right':
-                if(position.getX() < render.getWidnowWidth() / 1.04 ){
+                if(position.getX() < render.getWidnowWidth() - this.getPlayerSize() ){
                     position.setX(position.getX() + this.getVelocity());
                 }
                 break;
         }
     },
-    
 }
