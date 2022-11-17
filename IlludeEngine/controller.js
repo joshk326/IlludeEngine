@@ -1,5 +1,5 @@
 //Position getter and setters
-let position = {
+let Position = {
     x: 0,
     y: 0,
     setX: function(x) {
@@ -25,23 +25,23 @@ let controller = {
     keyDownHandler: function(e){
         if(e.key == "w" || e.key == "ArrowUp" || e.key == "up") {
             this.upIsPressed = true; 
-            physics.playerMovement("up"); 
-            console.log("Y: " +position.getY());     
+            Physics.playerMovement("up"); 
+            console.log("Y: " + Position.getY());     
         }
         else if(e.key == "a" || e.key == "ArrowLeft" || e.key == "left"){
             this.leftIsPressed = true; 
-            physics.playerMovement("left");
-            console.log("X: " + position.getX());        
+            Physics.playerMovement("left");
+            console.log("X: " + Position.getX());        
         }
         else if(e.key == "s" || e.key == "ArrowDown" || e.key == "down"){
             this.downIsPressed = true; 
-            physics.playerMovement("down")
-            console.log("Y: " +position.getY());
+            Physics.playerMovement("down");
+            console.log("Y: " + Position.getY());
         }
         else if(e.key == "d" || e.key == "ArrowRight" || e.key == "right"){
             this.rightIsPressed = true;
-            physics.playerMovement("right")
-            console.log("X: " +position.getX());
+            Physics.playerMovement("right");
+            console.log("X: " + Position.getX());
         }
     },
     keyUpHandler: function(e){

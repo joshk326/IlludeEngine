@@ -1,10 +1,9 @@
-let physics = {
+let Physics = {
     velocity: 0,
-    playerSize: 0,
-    setPlayerSize: function(size){
-        this.playerSize = size;
-    },
-    getPlayerSize: function(){return this.playerSize;},
+    playerHeight: 32,
+    playerWidth: 24,
+    getPlayerHeight: function(){return this.playerHeight;},
+    getPlayerWidth: function(){return this.playerWidth;},
     setVelocity: function(playerVelocity) {
         this.velocity = playerVelocity;
     },
@@ -12,25 +11,39 @@ let physics = {
     playerMovement: function(direction) {
         switch (direction) {
             case 'up':
-                if(position.getY() >= 0){
-                    position.setY(position.getY() - this.getVelocity());
-                }  
+                Position.setY(Position.getY() - this.getVelocity());
                 break;
             case 'down':
-                if(position.getY() < render.getWindowHeight() - this.getPlayerSize() ){
-                    position.setY(position.getY() + this.getVelocity());
-                }
+                Position.setY(Position.getY() + this.getVelocity());
                 break;
             case 'left':
-                if(position.getX() >= 0){
-                    position.setX(position.getX() - this.getVelocity());
-                }
+                Position.setX(Position.getX() - this.getVelocity());
                 break;
             case 'right':
-                if(position.getX() < render.getWidnowWidth() - this.getPlayerSize() ){
-                    position.setX(position.getX() + this.getVelocity());
-                }
+                Position.setX(Position.getX() + this.getVelocity());
                 break;
+        }
+    },
+    borderCollision: function() {
+        if(Position.getX() < 0) {
+            Position.setX(0);
+        }
+        if(Position.getX() > Render.getWidnowWidth() - this.getPlayerWidth()) {
+            Position.setX(Render.getWidnowWidth() - this.getPlayerWidth());
+        }
+        if(Position.getY() < 0) {
+            Position.setY(0);
+        }
+        if(Position.getY() > Render.getWindowHeight() - this.getPlayerHeight()) {
+            Position.setY(Render.getWindowHeight() - this.getPlayerHeight());
+        }
+    },
+    blockCollision: function(playerX, playerY, playerWidth, playerHeight, blockX, blockY, blockWidth, blockHeight) {
+        if(playerX < blockX + blockWidth && playerX + playerWidth > blockX && playerY < blockY + blockHeight && playerY + playerHeight > blockY) {
+            return true;
+        }
+        else {
+            return false;
         }
     },
 }
